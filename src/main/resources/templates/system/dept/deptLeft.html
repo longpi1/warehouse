@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="format-detection" content="telephone=no">
+<link rel="icon" href="/favicon.ico">
+<link rel="stylesheet" href="/resources/layui/css/layui.css" media="all" />
+<link rel="stylesheet" href="/resources/css/public.css" media="all" />
+<link rel="stylesheet" href="/resources/layui_ext/dtree/dtree.css" media="all" />
+<link rel="stylesheet" href="/resources/layui_ext/dtree/font/dtreefont.css" media="all" />
+</head>
+<body>
+<!-- 存放树的容器 -->
+<ul id="deptTree" class="dtree" data-id="0"></ul>
+
+<script type="text/javascript" src="/resources/layui/layui.js"></script>
+<script type="text/javascript">
+var deptTree;
+layui.extend({
+    dtree: '/resources/layui_ext/dtree/dtree'   // {/}的意思即代表采用自有路径，即不跟随 base 路径
+  }).use(['dtree','layer','jquery'], function(){
+    var dtree = layui.dtree;
+    var layer = layui.layer;
+    $ = layui.jquery;
+    
+    // 初始化树
+    deptTree= dtree.render({
+      elem: "#deptTree",
+      dataStyle: "layuiStyle",  //使用layui风格的数据格式
+      dataFormat: "list",  //配置data的风格为list
+      response:{message:"msg",statusCode:0},  //修改response中返回数据的定义
+      url: "/dept/loadDeptManagerLeftTreeJson" // 使用url加载（可与data加载同时存在）
+    });
+    
+    // 绑定节点点击
+    dtree.on("node(deptTree)" ,function(obj){
+     // layer.msg(JSON.stringify(obj.param));
+      window.parent.right.reloadTable(obj.param.nodeId);
+    });
+  });
+
+</script>
+
+</body>
+</html>

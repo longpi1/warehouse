@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>文章列表--layui后台管理模板 2.0</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="../../layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="../../css/public.css" media="all" />
+</head>
+<body class="childrenBody">
+<form class="layui-form layui-row layui-col-space10">
+	<div class="layui-col-md12 layui-col-xs12">
+		<div class="layui-row layui-col-space10">
+			<div class="layui-col-md9 layui-col-xs7">
+				<div class="layui-form-item magt3">
+					<label class="layui-form-label">供应商</label>
+					<div class="layui-input-block">
+						 <select name="providerid" id="providerid">
+		         			<option value="0">请选择供应商</option>
+		         		</select>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">商品名称</label>
+					<div class="layui-input-block">
+						<input type="text" class="layui-input" name="goodsname" lay-verify="required" placeholder="请输入商品名称">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">商品描述</label>
+					<div class="layui-input-block">
+						<input type="text" class="layui-input" name="description" lay-verify="required" placeholder="请输入商品描述">
+					</div>
+				</div>
+			</div>
+			<div class="layui-col-md3 layui-col-xs5">
+				<div class="layui-upload-list thumbBox mag0 magt3">
+					<input type="hidden" name="goodsimg" value="">
+					<img class="layui-upload-img thumbImg">
+				</div>
+			</div>
+		</div>
+		<div class="layui-form-item magb0">
+			<div class="layui-inline">
+			    <label class="layui-form-label">产地</label>
+				<div class="layui-input-inline">
+					<input type="text" class="layui-input" name="produceplace" lay-verify="" placeholder="请输入商品产地">
+			   </div>
+			</div>
+			<div class="layui-inline">
+			    <label class="layui-form-label">包装</label>
+				<div class="layui-input-inline">
+					<input type="text" class="layui-input" name="goodspackage" lay-verify="" placeholder="请输入商品包装">
+			   </div>
+			</div>
+			<div class="layui-inline">
+			    <label class="layui-form-label">规格</label>
+				<div class="layui-input-inline">
+					<input type="text" class="layui-input" name="size" lay-verify="" placeholder="请输入商品规格">
+			   </div>
+			</div>
+			<div class="layui-inline">
+			    <label class="layui-form-label">生产批号</label>
+				<div class="layui-input-inline">
+					<input type="text" class="layui-input" name="productcode" lay-verify="" placeholder="请输入商品生产批号">
+			   </div>
+			</div>
+			<div class="layui-inline">
+			    <label class="layui-form-label">批准文号</label>
+				<div class="layui-input-inline">
+					<input type="text" class="layui-input" name="promitcode" lay-verify="" placeholder="请输入商品批准文号">
+			   </div>
+			</div>
+			<div class="layui-inline">
+			    <label class="layui-form-label">销售价格</label>
+				<div class="layui-input-inline">
+					<input type="text" class="layui-input" name="price" lay-verify="" placeholder="请输入商品销售价格">
+			   </div>
+			</div>
+			<div class="layui-inline">
+			    <label class="layui-form-label">库存量</label>
+				<div class="layui-input-inline">
+					<input type="text" class="layui-input" name="number" lay-verify="" placeholder="请输入商品库存量">
+			   </div>
+			</div>
+			<div class="layui-inline">
+			    <label class="layui-form-label">预警值</label>
+				<div class="layui-input-inline">
+					<input type="text" class="layui-input" name="dangernum" lay-verify="" placeholder="请输入商品预警值">
+			   </div>
+			</div>
+			<div class="layui-inline">
+		      <label class="layui-form-label">是否可用</label>
+		      <div class="layui-input-inline">
+		        <input type="radio" name="available" value="1" title="可用" checked="">
+		        <input type="radio" name="available" value="0" title="不可用" >
+		      </div>
+	    	</div>
+		</div>
+	</div>
+</form>
+<script type="text/javascript" src="../../layui/layui.js"></script>
+<script type="text/javascript" src="newsAdd.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+spring:
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/warehouse?useUnicode=true&characterEncoding=utf8&useSSL=true&serverTimezone=UTC
+      username: root
+      password: 123456
+      max-active: 20
+      max-wait: 5000
+      initial-size: 1
+      filters: stat,log4j,wall
+      validationQuery: SELECT 'x'
+      enable: true
+
+      stat-view-servlet:
+        enabled: true
+        login-username: root
+        login-password: 123456
+        allow: 
+        deny: 
+        url-pattern: /druid/*
+  thymeleaf: 
+    cache: false
+    enabled: true
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+#配置mybatisplus
+mybatis-plus:
+  mapper-locations:
+  - classpath:mapper/*/*Mapper.xml
+  global-config:
+    db-config:
+      id-type: auto
+    banner: true
+
+shiro:
+  hash-algorithm-name: md5
+  hash-iterations: 2
+  anon-urls:
+  - /index.html*
+  - /sys/toLogin*
+  - /login/login*
+  - /resources/**
+  - /login/getVerifiCode
+  login-url: /index.html
+  log-out-url: /login/logout*
+  authc-ulrs:
+  - /**
+  
