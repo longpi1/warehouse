@@ -9,37 +9,36 @@ import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombi
 
 /**
  * 拼音工具类
- * 
- * @author lp
  *
+ * @author lp
  */
 public class PinyinUtils {
 
-	// 返回一个拼音字符串，并且首字母大写
-	public static String getPingYin(String inputString) {
-		HanyuPinyinOutputFormat format = new HanyuPinyinOutputFormat();
-		format.setCaseType(HanyuPinyinCaseType.LOWERCASE);
-		format.setToneType(HanyuPinyinToneType.WITHOUT_TONE);
-		format.setVCharType(HanyuPinyinVCharType.WITH_V);
-		String output = "";
-		if (inputString != null && inputString.length() > 0 && !"null".equals(inputString)) {
-			char[] input = inputString.trim().toCharArray();
-			try {
-				for (int i = 0; i < input.length; i++) {
-					if (java.lang.Character.toString(input[i]).matches("[\\u4E00-\\u9FA5]+")) {
-						String[] temp = PinyinHelper.toHanyuPinyinStringArray(input[i], format);
-						output += temp[0];
-					} else
-						output += java.lang.Character.toString(input[i]);
-				}
-			} catch (BadHanyuPinyinOutputFormatCombination e) {
-				e.printStackTrace();
-			}
-		} else {
-			return "*";
-		}
-		return output;
-	}
+    // 返回一个拼音字符串，并且首字母大写
+    public static String getPingYin(String inputString) {
+        HanyuPinyinOutputFormat format = new HanyuPinyinOutputFormat();
+        format.setCaseType(HanyuPinyinCaseType.LOWERCASE);
+        format.setToneType(HanyuPinyinToneType.WITHOUT_TONE);
+        format.setVCharType(HanyuPinyinVCharType.WITH_V);
+        String output = "";
+        if (inputString != null && inputString.length() > 0 && !"null".equals(inputString)) {
+            char[] input = inputString.trim().toCharArray();
+            try {
+                for (int i = 0; i < input.length; i++) {
+                    if (java.lang.Character.toString(input[i]).matches("[\\u4E00-\\u9FA5]+")) {
+                        String[] temp = PinyinHelper.toHanyuPinyinStringArray(input[i], format);
+                        output += temp[0];
+                    } else
+                        output += java.lang.Character.toString(input[i]);
+                }
+            } catch (BadHanyuPinyinOutputFormatCombination e) {
+                e.printStackTrace();
+            }
+        } else {
+            return "*";
+        }
+        return output;
+    }
 
 
 }

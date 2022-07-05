@@ -9,14 +9,14 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 public class CustomerVo extends Customer {
 
-	/*
-	 *  
-	 */
-	private static final long serialVersionUID = 1L;
+    /*
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-	private Integer page = 1;
-	private Integer limit = 10;
+    private Integer page = 1;
+    private Integer limit = 10;
 
-	private Integer[] ids;
+    private Integer[] ids;
 
 }

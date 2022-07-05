@@ -9,18 +9,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * 
  * @author lp
- *
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class ActiverUser {
 
-	private User user;
-	
-	private List<String> roles;
-	
-	private List<String> permissions;
+    private User user;
+
+    private List<String> roles;
+
+    private List<String> permissions;
 }

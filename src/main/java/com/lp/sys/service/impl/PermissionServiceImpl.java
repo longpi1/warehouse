@@ -17,12 +17,12 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permission> implements PermissionService {
 
-	
-	@Override
-	public boolean removeById(Serializable id) {
-		PermissionMapper permissionMapper = this.getBaseMapper();
-		//根据权限或菜单ID删除权限表各和角色的关系表里面的数据
-		permissionMapper.deleteRolePermissionByPid(id);
-		return super.removeById(id);
-	}
+
+    @Override
+    public boolean removeById(Serializable id) {
+        PermissionMapper permissionMapper = this.getBaseMapper();
+        //根据权限或菜单ID删除权限表各和角色的关系表里面的数据
+        permissionMapper.deleteRolePermissionByPid(id);
+        return super.removeById(id);
+    }
 }

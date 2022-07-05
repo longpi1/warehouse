@@ -5,7 +5,7 @@ import com.lp.sys.domain.Dept;
 
 /**
  * <p>
- *  Mapper 接口
+ * Mapper 接口
  * </p>
  *
  * @author lp

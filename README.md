@@ -1,9 +1,12 @@
 # 基于spring boot的中小型仓库物流管理系统(springboot+mybatis-plus+shiro+mysql+layui前端框架)
-后端技术栈：springboot、mybatis-plus、shiro
+## 技术栈使用
+后端：springboot、mybatis-plus、shiro
 
-前端主要使用layUI
+前端：layUI
 
-主要功能实现：
+存储：mysql
+
+## 主要功能实现：
 
 1.基础管理：商品管理、客户管理、供应商管理；
 
@@ -16,7 +19,7 @@
 5.其他：
 
 
-安装步骤：
+## 安装步骤：
 
 1.git克隆或者直接下载
 
@@ -27,6 +30,8 @@
 切换端口或者修改数据库、shiro配置信息进入application.yml文件修改
 
 管理员账号：system  密码：123456 验证码输入：注意验证码字母要大写
+
+## 功能展示：
 
 登录界面：https://static01.imgkr.com/temp/3f91b753923c4cb4a054db31134b6d9a.png
 

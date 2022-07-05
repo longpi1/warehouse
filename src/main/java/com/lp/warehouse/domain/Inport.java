@@ -14,7 +14,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author lp
@@ -25,7 +25,7 @@ import lombok.experimental.Accessors;
 @TableName("bus_inport")
 public class Inport implements Serializable {
 
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
@@ -45,11 +45,11 @@ public class Inport implements Serializable {
     private Integer providerid;
 
     private Integer goodsid;
-    
-    @TableField(exist=false)
+
+    @TableField(exist = false)
     private String providername;
-    @TableField(exist=false)
+    @TableField(exist = false)
     private String goodsname;
-    @TableField(exist=false)
+    @TableField(exist = false)
     private String size;//规格 
 }

@@ -15,7 +15,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author lp
@@ -27,7 +27,7 @@ import lombok.experimental.Accessors;
 @ToString
 public class User implements Serializable {
 
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
@@ -65,17 +65,17 @@ public class User implements Serializable {
     private String imgpath;
 
     private String salt;
-    
-    
+
+
     /**
      * 领导名称
      */
-    @TableField(exist=false)
+    @TableField(exist = false)
     private String leadername;
     /**
      * 部门名称
      */
-    @TableField(exist=false)
+    @TableField(exist = false)
     private String deptname;
 
 

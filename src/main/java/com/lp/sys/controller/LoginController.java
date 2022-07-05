@@ -35,46 +35,47 @@ import java.util.Map;
 @RequestMapping("login")
 public class LoginController {
 
-	@Autowired
-	private LoginfoService loginfoService;
-	@RequestMapping("getVerifiCode")
-	@SuppressWarnings("rawtypes")
-	public void getVerifiCode(HttpServletResponse response, HttpSession session) throws IOException {
-       Map map = ImageVerificationCode.generateCodeAndPic();
-  ServletOutputStream out = response.getOutputStream();
-  BufferedImage img = (BufferedImage) map.get("codePic");
-  String securityCode = (String) map.get("code");
-  session.setAttribute("securityCode", securityCode);
-		ImageIO.write(img, "jpg", response.getOutputStream());
+    @Autowired
+    private LoginfoService loginfoService;
 
-	}
+    @RequestMapping("getVerifiCode")
+    @SuppressWarnings("rawtypes")
+    public void getVerifiCode(HttpServletResponse response, HttpSession session) throws IOException {
+        Map map = ImageVerificationCode.generateCodeAndPic();
+        ServletOutputStream out = response.getOutputStream();
+        BufferedImage img = (BufferedImage) map.get("codePic");
+        String securityCode = (String) map.get("code");
+        session.setAttribute("securityCode", securityCode);
+        ImageIO.write(img, "jpg", response.getOutputStream());
 
-	@RequestMapping("login")
-	public ResultObj login(String loginname,String pwd,HttpServletRequest request,HttpServletResponse response) throws UnsupportedEncodingException {
-		Subject subject = SecurityUtils.getSubject();
-		AuthenticationToken token=new UsernamePasswordToken(loginname, pwd);
-		request.setCharacterEncoding("utf-8");
-		String session_vcode=(String) request.getSession().getAttribute("securityCode");
-		String code = request.getParameter("code");
+    }
 
-		if(!code.equals(session_vcode)){
-			return ResultObj.LOGIN_ERROR_CODE;
-		}
-		try {
-			subject.login(token);
-			ActiverUser activerUser=(ActiverUser) subject.getPrincipal();
-			WebUtils.getSession().setAttribute("user", activerUser.getUser());
-			//记录登陆日志
-			Loginfo entity=new Loginfo();
-			entity.setLoginname(activerUser.getUser().getName()+"-"+activerUser.getUser().getLoginname());
-			entity.setLoginip(WebUtils.getRequest().getRemoteAddr());
-			entity.setLogintime(new Date());
-			loginfoService.save(entity);
-			return ResultObj.LOGIN_SUCCESS;
-		} catch (AuthenticationException e) {
-			e.printStackTrace();
-			return ResultObj.LOGIN_ERROR_PASS;
-		}
-	}
+    @RequestMapping("login")
+    public ResultObj login(String loginname, String pwd, HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
+        Subject subject = SecurityUtils.getSubject();
+        AuthenticationToken token = new UsernamePasswordToken(loginname, pwd);
+        request.setCharacterEncoding("utf-8");
+        String session_vcode = (String) request.getSession().getAttribute("securityCode");
+        String code = request.getParameter("code");
+
+        if (!code.equals(session_vcode)) {
+            return ResultObj.LOGIN_ERROR_CODE;
+        }
+        try {
+            subject.login(token);
+            ActiverUser activerUser = (ActiverUser) subject.getPrincipal();
+            WebUtils.getSession().setAttribute("user", activerUser.getUser());
+            //记录登陆日志
+            Loginfo entity = new Loginfo();
+            entity.setLoginname(activerUser.getUser().getName() + "-" + activerUser.getUser().getLoginname());
+            entity.setLoginip(WebUtils.getRequest().getRemoteAddr());
+            entity.setLogintime(new Date());
+            loginfoService.save(entity);
+            return ResultObj.LOGIN_SUCCESS;
+        } catch (AuthenticationException e) {
+            e.printStackTrace();
+            return ResultObj.LOGIN_ERROR_PASS;
+        }
+    }
 }
 

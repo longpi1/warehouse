@@ -8,16 +8,16 @@ import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 
 /**
  * mybatisplus的配置类
- * @author lp
  *
+ * @author lp
  */
 @Configuration
-@ConditionalOnClass(value= {PaginationInterceptor.class})
+@ConditionalOnClass(value = {PaginationInterceptor.class})
 public class MybatisPlusConfig {
-	
-	@Bean
-	public PaginationInterceptor  paginationInterceptor() {
-		return new PaginationInterceptor();
-	}
+
+    @Bean
+    public PaginationInterceptor paginationInterceptor() {
+        return new PaginationInterceptor();
+    }
 
 }

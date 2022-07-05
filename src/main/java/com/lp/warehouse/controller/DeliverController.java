@@ -40,10 +40,10 @@ public class DeliverController {
     public DataGridView loadAllDeliver(DeliverVo deliverVo) {
         IPage<Deliver> page = new Page<>(deliverVo.getPage(), deliverVo.getLimit());
         QueryWrapper<Deliver> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq(deliverVo.getCustomerid()!=null&&deliverVo.getCustomerid()!=0,"customerid",deliverVo.getCustomerid());
-        queryWrapper.eq(deliverVo.getGoodsid()!=null&&deliverVo.getGoodsid()!=0,"goodsid",deliverVo.getGoodsid());
-        queryWrapper.ge(deliverVo.getStartTime()!=null, "delivertime", deliverVo.getStartTime());
-        queryWrapper.le(deliverVo.getEndTime()!=null, "delivertime", deliverVo.getEndTime());
+        queryWrapper.eq(deliverVo.getCustomerid() != null && deliverVo.getCustomerid() != 0, "customerid", deliverVo.getCustomerid());
+        queryWrapper.eq(deliverVo.getGoodsid() != null && deliverVo.getGoodsid() != 0, "goodsid", deliverVo.getGoodsid());
+        queryWrapper.ge(deliverVo.getStartTime() != null, "delivertime", deliverVo.getStartTime());
+        queryWrapper.le(deliverVo.getEndTime() != null, "delivertime", deliverVo.getEndTime());
         queryWrapper.like(StringUtils.isNotBlank(deliverVo.getOperateperson()), "operateperson", deliverVo.getOperateperson());
         queryWrapper.like(StringUtils.isNotBlank(deliverVo.getRemark()), "remark", deliverVo.getRemark());
         queryWrapper.orderByDesc("delivertime");
@@ -51,15 +51,15 @@ public class DeliverController {
         List<Deliver> records = page.getRecords();
         for (Deliver deliver : records) {
             Customer customer = this.customerService.getById(deliver.getCustomerid());
-            if(null!=customer) {
+            if (null != customer) {
                 deliver.setCustomername(customer.getCustomername());
                 deliver.setCustomerplace(customer.getAddress());
             }
             Goods goods = this.goodsService.getById(deliver.getGoodsid());
-            if(null!=goods) {
+            if (null != goods) {
                 deliver.setGoodsname(goods.getGoodsname());
                 deliver.setSize(goods.getSize());
-               // deliver.setDeliverprice(goods.getPrice());
+                // deliver.setDeliverprice(goods.getPrice());
             }
         }
         return new DataGridView(page.getTotal(), records);
@@ -72,14 +72,14 @@ public class DeliverController {
     public ResultObj addDeliver(DeliverVo deliverVo) {
         try {
             //库存变化
-            QueryWrapper<Goods> queryWrapper=new QueryWrapper<>();
-            queryWrapper.eq("id",deliverVo.getGoodsid());
+            QueryWrapper<Goods> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("id", deliverVo.getGoodsid());
             Goods goods = goodsService.getOne(queryWrapper);
 
-            goods.setNumber(goods.getNumber()+deliverVo.getNumber());
+            goods.setNumber(goods.getNumber() + deliverVo.getNumber());
 
             deliverVo.setDelivertime(new Date());
-            User user=(User) WebUtils.getSession().getAttribute("user");
+            User user = (User) WebUtils.getSession().getAttribute("user");
             deliverVo.setOperateperson(user.getName());
             this.deliverService.save(deliverVo);
             return ResultObj.ADD_SUCCESS;
@@ -94,8 +94,7 @@ public class DeliverController {
      */
     @RequestMapping("updateDeliver")
     public ResultObj updateDeliver(DeliverVo deliverVo) {
-        try
-        {
+        try {
             this.deliverService.updateById(deliverVo);
             return ResultObj.UPDATE_SUCCESS;
         } catch (Exception e) {
@@ -103,6 +102,7 @@ public class DeliverController {
             return ResultObj.UPDATE_ERROR;
         }
     }
+
     /**
      * 删除
      */
