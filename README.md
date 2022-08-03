@@ -33,6 +33,6 @@
 
 ## 功能展示：
 
-登录界面：https://static01.imgkr.com/temp/3f91b753923c4cb4a054db31134b6d9a.png
+登录界面：![登录界面.png](https://s2.loli.net/2022/08/03/RQvBPIWNL1pVyeh.png)
 
-功能界面：https://static01.imgkr.com/temp/0fb8bc2ab64141bbb1aa51d455aab76b.png
+功能界面：![功能界面.png](https://s2.loli.net/2022/08/03/gKi8TM52HoaR4lu.png)
